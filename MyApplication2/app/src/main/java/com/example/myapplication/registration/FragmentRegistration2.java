@@ -9,10 +9,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +40,6 @@ public class FragmentRegistration2 extends Fragment {
     Button btnSave, btnToLogIn;;
     EditText editTextLogin, editTextMail, editTextPhone, editTextPassword;
     SharedPreferences sPref;
-
-    DataBase db;
     TextInputLayout loginLayout, mailLayout, phoneLayout, passwordLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +48,6 @@ public class FragmentRegistration2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_registration2, container, false);
 
         Activity activity = getActivity();
-        db = new DataBase(activity);
 
         editTextLogin = view.findViewById(R.id.editLogin);
         editTextMail = view.findViewById(R.id.editMail);
@@ -94,14 +93,14 @@ public class FragmentRegistration2 extends Fragment {
                     closeKeyboard();
                     Toast.makeText(activity, "Сохранение завершено!",Toast.LENGTH_LONG).show();
 
-                    db.addUser(editTextLogin.getText().toString(),
-                            strMail,
-                            strPhone,
-                            strPassword);
                     SaveData();
 
-                    activity.startActivityForResult(new Intent(activity, MainActivity.class), 1);
-                    activity.finish();
+                    try {
+                        NavController navController = Navigation.findNavController(v);
+                        navController.navigate(R.id.action_fragmentRegistration2_to_fragment_certificate);
+                    } catch (Exception e) {
+                        Log.e("NAVIGATION", "Navigation failed", e);
+                    }
                 }
             }
         });
@@ -117,7 +116,6 @@ public class FragmentRegistration2 extends Fragment {
         sPref = activity.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
 
-        ed.putBoolean(DATA_SAVE, true);
         ed.putString(APP_PREFERENCES_LOGIN, editTextLogin.getText().toString());
         ed.putString(APP_PREFERENCES_MAIL, editTextMail.getText().toString());
         ed.putString(APP_PREFERENCES_PHONE, editTextPhone.getText().toString());

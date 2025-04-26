@@ -7,6 +7,7 @@ import static com.example.myapplication.StopwatchService.PREFS_NAME;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -154,9 +156,8 @@ public class CardOfCar extends Fragment {
             @Override
             public void onClick(View v) {
                 if (sPref.getString(APP_PREFERENCES_IS_RENT, "NULL").equals("false")) {
-                    ed.putString(APP_PREFERENCES_IS_RENT, "true");
-                    ed.putString(APP_PREFERENCES_CARISOPEN, "false");
-                    ed.putString(APP_PREFERENCES_ID_RENT_CAR, auto_id);
+                    Zalog();
+
                 }
                 else if (sPref.getString(APP_PREFERENCES_IS_RENT, "NULL").equals("true") &&
                         sPref.getString(APP_PREFERENCES_CARISOPEN, "NULL").equals("false")) {
@@ -182,7 +183,8 @@ public class CardOfCar extends Fragment {
 
                     btnRent.setText("Забронировать");
 
-                    //pay
+                    //оплата
+
                     ((MainActivity)getActivity()).setStatusCar(auto_id, "1");
                     try {
                         String autoPriceStr = arguments.getString("auto_price", "0");
@@ -257,6 +259,43 @@ public class CardOfCar extends Fragment {
         }
 
         ((MainActivity)getActivity()).checkIdForBtn();
+    }
+
+    public void Zalog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Оплата залога");
+
+        builder.setMessage("Для бронирования необходимо внести залог: 3000 ₽\nЗалог будет возвращен после завершения поездки.");
+
+        builder.setPositiveButton("Оплатить", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                //переход на страницу оплаты
+                Toast.makeText(getActivity(), "Оплата залога прошла успешно", Toast.LENGTH_SHORT).show();
+
+                ed.putBoolean("deposit_paid", true);
+
+                ed.putString(APP_PREFERENCES_IS_RENT, "true");
+                ed.putString(APP_PREFERENCES_CARISOPEN, "false");
+                ed.putString(APP_PREFERENCES_ID_RENT_CAR, auto_id);
+                ed.commit();
+
+                btnRent.setText("Открыть автомобиль");
+            }
+        });
+        builder.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setCancelable(false);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override

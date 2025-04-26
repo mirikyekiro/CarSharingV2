@@ -16,6 +16,13 @@
             app:exitAnim="@anim/slide_out_top"
             app:popEnterAnim="@anim/slide_out_bottom"
             app:popExitAnim="@anim/slide_in_bottom" />
+        <action
+            android:id="@+id/action_fragmentRegistration2_to_fragment_certificate"
+            app:destination="@id/fragment_certificate"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_out_bottom"
+            app:popExitAnim="@anim/slide_in_bottom" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRegistration1"
@@ -49,4 +56,9 @@
             app:popEnterAnim="@anim/slide_out_bottom"
             app:popExitAnim="@anim/slide_in_bottom" />
     </fragment>
+    <fragment
+        android:id="@+id/fragment_certificate"
+        android:name="com.example.myapplication.registration.FragmentCertificate"
+        android:label="fragment_certificate"
+        tools:layout="@layout/fragment_certificate" />
 </navigation>

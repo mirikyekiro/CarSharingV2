@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".registration.FragmentCertificate"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Введите данные удостоверения"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp">
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/placeOfBirthError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:errorEnabled="true"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/editPlaceOfBirth"
+                android:layout_width="300dp"
+                android:layout_height="48sp"
+                android:hint="Место рождения"
+                android:textColorHint="#888888"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:inputType="text">
+            </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="5sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата рождения:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/btnDateOfBirthSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DateStr"
+                android:layout_gravity="center"
+                android:backgroundTint="#00000000"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="5sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата получения:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/btnDateOfIssueSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DateStr"
+                android:layout_gravity="center"
+                android:backgroundTint="#00000000"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="5sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Дата окончания:"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/btnDateOfExpSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/DateStr"
+                android:layout_gravity="center"
+                android:backgroundTint="#00000000"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/issuedByError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:errorEnabled="true"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/editIssuedBy"
+                android:layout_width="300dp"
+                android:layout_height="48sp"
+                android:hint="Выдано кем:"
+                android:textColorHint="#888888"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:inputType="text">
+            </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codeError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:errorEnabled="true"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/editCode"
+                android:layout_width="300dp"
+                android:layout_height="48sp"
+                android:hint="Код:"
+                android:textColorHint="#888888"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:inputType="text">
+            </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/residenceError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:errorEnabled="true"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/editResidence"
+                android:layout_width="300dp"
+                android:layout_height="48sp"
+                android:hint="Город проживания:"
+                android:textColorHint="#888888"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:inputType="text">
+            </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/categoryError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:errorEnabled="true"
+            android:layout_marginTop="12dp">
+
+            <EditText
+                android:id="@+id/editCategory"
+                android:layout_width="300dp"
+                android:layout_height="48sp"
+                android:hint="Категория:"
+                android:textColorHint="#888888"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:inputType="text">
+            </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Продолжить"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:backgroundTint="#FF9C8F4E"
+            android:layout_gravity="center"
+            android:layout_marginTop="8sp"/>
+
+    </LinearLayout>
+
+</ScrollView>
